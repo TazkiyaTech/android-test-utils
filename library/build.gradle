@@ -1,0 +1,124 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'digital.wup.android-maven-publish'
+apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.dokka'
+
+group = getProperty('projectGroupName')
+version = getProperty('projectVersionName')
+
+File[] proGuardFileCollection = file('./proguard').listFiles()
+File[] proGuardDebugFileCollection = file('./proguard-debug').listFiles()
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFile(getDefaultProguardFile('proguard-android.txt'))
+            proguardFiles(proGuardFileCollection)
+            proguardFiles(proGuardDebugFileCollection)
+        }
+
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFile(getDefaultProguardFile('proguard-android.txt'))
+            proguardFiles(proGuardFileCollection)
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError true
+    }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.test.ext:junit:1.1.2'
+    implementation 'androidx.test:runner:1.3.0'
+    implementation 'androidx.test:rules:1.3.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    testImplementation "org.hamcrest:hamcrest-core:2.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5_version"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:$junit5_version"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$junit5_version"
+}
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier.set('sources')
+    group = 'build'
+}
+
+task generateJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
+    outputFormat = 'javadoc'
+    outputDirectory = "$buildDir/docs/javadoc"
+    description = "Generates the Javadoc for this module."
+    group = 'documentation'
+}
+
+task generateJavadocJar(type: Jar) {
+    from generateJavadoc
+    archiveClassifier.set('javadoc')
+    destinationDirectory.set(file("$buildDir/outputs/javadoc"))
+    description = "Builds up a jar of this module's Javadoc."
+    group = 'build'
+}
+
+publishing {
+    publications {
+        UtilsLibrary(MavenPublication) {
+            from components.android
+            artifact generateJavadocJar
+            artifact generateSourcesJar
+
+            groupId getProperty('projectGroupName')
+            artifactId getProperty('projectArtifactName')
+            version getProperty('projectVersionName')
+        }
+    }
+}
+
+bintray {
+    user = getProperty('bintray_user')
+    key = getProperty('bintray_api_key')
+    publications = ['UtilsLibrary']
+    pkg {
+        repo = 'maven'
+        name = getProperty('projectArtifactName')
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://bitbucket.org/adilson05uk/utils-library.git'
+
+        version {
+            name = getProperty('projectVersionName')
+            desc = 'Latest release!'
+            released = new Date()
+            vcsTag = 'release_' + getProperty('projectVersionName')
+        }
+    }
+}
