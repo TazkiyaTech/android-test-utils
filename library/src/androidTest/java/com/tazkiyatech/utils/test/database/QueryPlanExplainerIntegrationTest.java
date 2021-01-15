@@ -291,7 +291,8 @@ public class QueryPlanExplainerIntegrationTest {
                 null,
                 null,
                 null,
-                null);
+                null
+        );
 
         // Then.
         assertEquals(expected, actual);
@@ -411,7 +412,7 @@ public class QueryPlanExplainerIntegrationTest {
     }
 
     @Test
-    public void explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_or_ColumnC() {
+    public void explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_or_ColumnC_1() {
         // Given.
         List<QueryPlanRow> expected = Arrays.asList(
                 new QueryPlanRow("MULTI-INDEX OR"),
@@ -423,7 +424,7 @@ public class QueryPlanExplainerIntegrationTest {
 
         // When.
         List<QueryPlanRow> actual = queryPlanExplainer.explainQueryPlanForSqlStatement(
-                "SELECT * FROM TableA WHERE ColumnB = 1 OR ColumnC = '1'"
+                "SELECT ColumnA, ColumnB, ColumnC FROM TableA WHERE ColumnB = 1 OR ColumnC = '1'"
         );
 
         // Then.
@@ -431,7 +432,34 @@ public class QueryPlanExplainerIntegrationTest {
     }
 
     @Test
-    public void explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_and_orderBy_matches_ColumnA() {
+    public void explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_or_ColumnC_2() {
+        // Given.
+        List<QueryPlanRow> expected = Arrays.asList(
+                new QueryPlanRow("MULTI-INDEX OR"),
+                new QueryPlanRow("INDEX 1"),
+                new QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
+                new QueryPlanRow("INDEX 2"),
+                new QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
+        );
+
+        // When.
+        List<QueryPlanRow> actual = queryPlanExplainer.explainQueryPlanForSelectStatement(
+                "TableA",
+                new String[]{"ColumnA", "ColumnB", "ColumnC"},
+                "ColumnB = ? OR ColumnC = ?",
+                new String[]{"1", "1"},
+                null,
+                null,
+                null,
+                null
+        );
+
+        // Then.
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_and_orderBy_matches_ColumnA_1() {
         // Given.
         QueryPlanRow queryPlanRow1 = new QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)");
         QueryPlanRow queryPlanRow2 = new QueryPlanRow("USE TEMP B-TREE FOR ORDER BY");
@@ -443,7 +471,34 @@ public class QueryPlanExplainerIntegrationTest {
 
         // When.
         List<QueryPlanRow> actual = queryPlanExplainer.explainQueryPlanForSqlStatement(
-                "SELECT * FROM TableA WHERE ColumnB = 1 ORDER BY ColumnA ASC"
+                "SELECT ColumnA, ColumnB, ColumnC FROM TableA WHERE ColumnB = 1 ORDER BY ColumnA ASC"
+        );
+
+        // Then.
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_and_orderBy_matches_ColumnA_2() {
+        // Given.
+        QueryPlanRow queryPlanRow1 = new QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)");
+        QueryPlanRow queryPlanRow2 = new QueryPlanRow("USE TEMP B-TREE FOR ORDER BY");
+
+        List<QueryPlanRow> expected = Arrays.asList(
+                queryPlanRow1,
+                queryPlanRow2
+        );
+
+        // When.
+        List<QueryPlanRow> actual = queryPlanExplainer.explainQueryPlanForSelectStatement(
+                "TableA",
+                new String[]{"ColumnA", "ColumnB", "ColumnC"},
+                "ColumnB = ?",
+                new String[]{"1"},
+                null,
+                null,
+                "ColumnA",
+                null
         );
 
         // Then.
