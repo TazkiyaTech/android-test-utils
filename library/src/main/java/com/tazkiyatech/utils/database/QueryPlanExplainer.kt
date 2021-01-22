@@ -31,7 +31,7 @@ class QueryPlanExplainer(private val database: SQLiteDatabase) {
      * @see SQLiteDatabase.query
      */
     fun explainQueryPlanForSelectStatement(table: String,
-                                           columns: Array<String?>?,
+                                           columns: Array<String>?,
                                            selection: String?,
                                            selectionArgs: Array<String>?,
                                            groupBy: String?,
