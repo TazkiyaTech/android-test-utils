@@ -1,5 +1,4 @@
 buildscript {
-    ext.junit5_version = '5.7.0'
     ext.kotlin_version = '1.4.21'
 
     repositories {

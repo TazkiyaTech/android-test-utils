@@ -59,11 +59,6 @@ android {
 dependencies {
     implementation 'androidx.test.espresso:espresso-contrib:3.3.0'
     implementation 'androidx.test.uiautomator:uiautomator:2.2.0'
-
-    testImplementation 'org.hamcrest:hamcrest-core:2.2'
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5_version"
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:$junit5_version"
-    testImplementation "org.junit.jupiter:junit-jupiter-params:$junit5_version"
 }
 
 task generateSourcesJar(type: Jar) {
