@@ -1,6 +1,6 @@
 # Android Test Utils
 
-This library contains classes and methods geared to help with testing Android projects.
+This library contains classes and methods designed to ease the writing of Android instrumentation tests.
 
 ## Espresso
 
