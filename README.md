@@ -7,6 +7,8 @@ This library contains classes and methods geared to help with testing Android pr
 * [RecyclerViewMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/RecyclerViewMatchers.kt) – Provides methods for matching on a [RecyclerView](https://developer.android.com/reference/kotlin/androidx/recyclerview/widget/RecyclerView) in a UI test.
 * [TextViewMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/TextViewMatchers.kt) – Provides methods for matching on a [TextView](https://developer.android.com/reference/android/widget/TextView) in a UI test.
 * [ViewActions](library/src/main/java/com/tazkiyatech/utils/espresso/ViewActions.kt) – Provides a method for waiting on a [View](https://developer.android.com/reference/android/view/View) to match a certain condition in a UI test.
+* [ViewInteractionExtensions](library/src/main/java/com/tazkiyatech/utils/espresso/ViewInteractionExtensions.kt) – Provides extension functions on the [ViewInteraction](https://developer.android.com/reference/androidx/test/espresso/ViewInteraction) class to improve the fluency of view actions and view matches in UI tests.
+* [ViewMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/ViewMatchers.kt) – Provides methods for matching on a [View](https://developer.android.com/reference/android/view/View) in a UI test.
 * [ViewPagerMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/ViewPagerMatchers.kt) – Provides methods for matching on a [ViewPager](https://developer.android.com/reference/kotlin/androidx/viewpager/widget/ViewPager) in a UI test.
 
 ## SQLite

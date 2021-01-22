@@ -20,6 +20,8 @@ fun ViewInteraction.checkMatches(vararg matchers: Matcher<View>): ViewInteractio
 /**
  * Waits up to [timeout] milliseconds for the view selected by the current view matcher to match the given [Matcher].
  *
+ * This function makes Espresso tests easier to read and write by combining a series of calls into one.
+ *
  * @param matcher the [Matcher] to wait for.
  * @param timeout the length of time in milliseconds to wait for.
  */
