@@ -4,9 +4,9 @@ This library contains a mixture of small helper classes useful for testing Andro
 
 ## Espresso
 
-* [RecyclerViewMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/RecyclerViewMatchers.kt) – Provides methods to match on certain properties of a [RecyclerView](https://developer.android.com/reference/kotlin/androidx/recyclerview/widget/RecyclerView).
-* [TextViewMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/TextViewMatchers.kt) – Provides methods to match on certain properties of a [TextView](https://developer.android.com/reference/android/widget/TextView).
-* [ViewPagerMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/ViewPagerMatchers.kt) – Provides methods to match on certain properties of a [ViewPager](https://developer.android.com/reference/kotlin/androidx/viewpager/widget/ViewPager).
+* [RecyclerViewMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/RecyclerViewMatchers.kt) – Provides methods for matching on a [RecyclerView](https://developer.android.com/reference/kotlin/androidx/recyclerview/widget/RecyclerView) in UI tests.
+* [TextViewMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/TextViewMatchers.kt) – Provides methods for matching on a [TextView](https://developer.android.com/reference/android/widget/TextView) in UI tests.
+* [ViewPagerMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/ViewPagerMatchers.kt) – Provides methods for matching on a [ViewPager](https://developer.android.com/reference/kotlin/androidx/viewpager/widget/ViewPager) in UI tests.
 
 ## SQLite
 
@@ -14,7 +14,7 @@ This library contains a mixture of small helper classes useful for testing Andro
 
 ## UiAutomator
 
-* [UiDeviceExtensions](library/src/main/java/com/tazkiyatech/utils/uiautomator/UiDeviceExtensions.kt) – Provides extension functions on the [UiDevice](https://developer.android.com/reference/androidx/test/uiautomator/UiDevice) class for waiting on the device's launcher screen and its recent apps screen.
+* [UiDeviceExtensions](library/src/main/java/com/tazkiyatech/utils/uiautomator/UiDeviceExtensions.kt) – Provides extension functions on the [UiDevice](https://developer.android.com/reference/androidx/test/uiautomator/UiDevice) class for waiting on the device's "launcher" (a.k.a. "home") and "recent apps" screens.
 
 ## Setup
 
