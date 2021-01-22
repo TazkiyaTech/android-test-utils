@@ -14,5 +14,5 @@ To use the above utilities within your app simply add the following repository a
         jcenter()
     }
     dependencies {
-        androidTestImplementation 'com.tazkiyatech:android-test-utils:0.0.3'
+        androidTestImplementation 'com.tazkiyatech:android-test-utils:0.0.5'
     }
