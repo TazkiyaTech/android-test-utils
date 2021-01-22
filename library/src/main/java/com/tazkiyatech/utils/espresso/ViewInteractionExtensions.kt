@@ -16,3 +16,13 @@ import org.hamcrest.Matchers.allOf
 fun ViewInteraction.checkMatches(vararg matchers: Matcher<View>): ViewInteraction {
     return check(matches(allOf(*matchers)))
 }
+
+/**
+ * Waits up to [timeout] milliseconds for the view selected by the current view matcher to match the given [Matcher].
+ *
+ * @param matcher the [Matcher] to wait for.
+ * @param timeout the length of time in milliseconds to wait for.
+ */
+fun ViewInteraction.waitForMatch(matcher: Matcher<View>, timeout: Long = 3000L): ViewInteraction {
+    return perform(ViewActions.waitForMatch(matcher, timeout))
+}
