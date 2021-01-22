@@ -1,4 +1,4 @@
-package com.tazkiyatech.utils.database;
+package com.tazkiyatech.utils.sqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
