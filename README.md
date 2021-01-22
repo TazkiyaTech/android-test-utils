@@ -13,7 +13,7 @@ This library contains classes and methods geared to help with testing Android pr
 
 ## SQLite
 
-* [QueryPlanExplainer](library/src/main/java/com/tazkiyatech/utils/sqlite/QueryPlanExplainer.java) – Provides methods for explaining the strategy or plan that SQLite will use to implement a specific SQL query.
+* [QueryPlanExplainer](library/src/main/java/com/tazkiyatech/utils/sqlite/QueryPlanExplainer.kt) – Provides methods for explaining the strategy or plan that SQLite will use to implement a specific SQL query.
 
 ## UiAutomator
 
