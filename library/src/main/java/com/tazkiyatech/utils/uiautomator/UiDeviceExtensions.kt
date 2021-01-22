@@ -1,3 +1,5 @@
+package com.tazkiyatech.utils.uiautomator
+
 import android.os.Build
 import androidx.test.uiautomator.*
 import org.junit.Assert.fail
