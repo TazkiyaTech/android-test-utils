@@ -57,8 +57,9 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.test.espresso:espresso-contrib:3.3.0'
-    implementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    api 'androidx.test.espresso:espresso-contrib:3.3.0'
+    api 'androidx.test.uiautomator:uiautomator:2.2.0'
+    implementation 'androidx.test:core:1.3.0'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 }
