@@ -6,12 +6,21 @@ import org.junit.Assert.fail
 
 private const val TIMEOUT_MILLIS: Long = 10_000L
 
+/**
+ * A [UiObject2] object which represents the overview panel that exists within the device's recent apps screen.
+ */
 val UiDevice.recentAppsOverviewPanel: UiObject2
     get() = findObject(recentAppsOverviewPanelSelector)
 
+/**
+ * A [BySelector] which specifies criteria for matching the overview panel that exists within the device's recent apps screen.
+ */
 private val UiDevice.recentAppsOverviewPanelSelector: BySelector
     get() = By.res(launcherPackage, "overview_panel")
 
+/**
+ * The package name of the device's launcher app.
+ */
 private val UiDevice.launcherPackage: String
     get() = if (Build.VERSION.SDK_INT == Build.VERSION_CODES.R && productName.startsWith("sdk_gphone_")) {
         // we're returning a hardcoded launcher package name because the UiDevice.getLauncherPackageName() method returns "com.android.settings" when run in an Android 11 emulator device (which is incorrect)
