@@ -76,8 +76,7 @@ class QueryPlanExplainer(private val database: SQLiteDatabase) {
             sb.append(limit)
         }
 
-        val sql = sb.toString()
-        return executeExplainQueryPlanStatement(sql, selectionArgs)
+        return executeExplainQueryPlanStatement(sb.toString(), selectionArgs)
     }
 
     /**
