@@ -1,4 +1,4 @@
-package com.tazkiyatech.utils.test.database
+package com.tazkiyatech.utils.database
 
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase

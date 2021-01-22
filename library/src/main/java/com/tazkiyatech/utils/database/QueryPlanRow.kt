@@ -1,4 +1,4 @@
-package com.tazkiyatech.utils.test.database
+package com.tazkiyatech.utils.database
 
 /**
  * Represents a row within the output of an "EXPLAIN QUERY PLAN" command.
