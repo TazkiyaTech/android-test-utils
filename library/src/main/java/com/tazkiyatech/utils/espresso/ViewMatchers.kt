@@ -6,8 +6,8 @@ import androidx.annotation.StringRes
 import androidx.test.espresso.matcher.ViewMatchers.*
 import com.tazkiyatech.utils.espresso.TextViewMatchers.withSubstring
 import org.hamcrest.Matcher
+import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.not
-import org.hamcrest.core.AllOf.allOf
 
 object ViewMatchers {
 
