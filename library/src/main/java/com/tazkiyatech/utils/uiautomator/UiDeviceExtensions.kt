@@ -20,6 +20,13 @@ private val UiDevice.recentAppsOverviewPanelSelector: BySelector
 
 /**
  * The package name of the device's launcher app.
+ *
+ * This method exists as a proxy for the [UiDevice.getLauncherPackageName] method
+ * because that method returns `"com.android.settings"` (incorrectly) when run in an Android 11 emulator device.
+ *
+ * TODO: Remove this method and call into [UiDevice.getLauncherPackageName] directly when the following issue is resolved: [https://issuetracker.google.com/issues/178965163](https://issuetracker.google.com/issues/178965163).
+ *
+ * @return the package name of the device's default launcher (a.k.a. home) app.
  */
 private val UiDevice.launcherPackage: String
     get() = if (Build.VERSION.SDK_INT == Build.VERSION_CODES.R && productName.startsWith("sdk_gphone_")) {
