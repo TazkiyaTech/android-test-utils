@@ -36,6 +36,7 @@ fun ViewInteraction.checkMatches(vararg matchers: Matcher<View>): ViewInteractio
  * Instead, you can write the following:
  * ```
  * onView(withId(R.id.someView)).waitForMatch(isDisplayed(), withText("Some text"))
+ * ```
  *
  * @param matchers the array of [Matcher]s to wait for.
  * @param timeout the length of time in milliseconds to wait for.
