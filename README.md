@@ -22,10 +22,10 @@ This library contains classes and methods designed to ease the writing of Androi
 ## Setup
 
 To use the above utilities within your app simply add the following repository and dependency declaration in the `build.gradle` file of your Android project:
- 
+
     repositories {
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        androidTestImplementation 'com.tazkiyatech:android-test-utils:0.0.7'
+        androidTestImplementation 'com.tazkiyatech:android-test-utils:0.0.8'
     }
