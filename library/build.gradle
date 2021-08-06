@@ -107,6 +107,10 @@ afterEvaluate {
                             url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
                         }
                     }
+                    organization {
+                        name = 'Tazkiya Tech'
+                        url = 'http://tazkiyatech.com'
+                    }
                     developers {
                         developer {
                             id = 'adil-hussain-84'
@@ -117,7 +121,7 @@ afterEvaluate {
                     scm {
                         connection = 'scm:git:git://github.com/TazkiyaTech/android-test-utils.git'
                         developerConnection = 'scm:git:ssh://github.com:TazkiyaTech/android-test-utils.git'
-                        url = 'https://github.com/TazkiyaTech/android-test-utils/tree/master'
+                        url = 'https://github.com/TazkiyaTech/android-test-utils'
                     }
                 }
             }
