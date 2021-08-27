@@ -1,3 +1,5 @@
+import org.jetbrains.dokka.gradle.DokkaTask
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
@@ -70,7 +72,7 @@ task generateSourcesJar(type: Jar) {
     group = 'build'
 }
 
-task generateJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
+task generateJavadoc(type: DokkaTask) {
     outputFormat = 'javadoc'
     outputDirectory = "$buildDir/docs/javadoc"
     description = "Generates the Javadoc for this module."
