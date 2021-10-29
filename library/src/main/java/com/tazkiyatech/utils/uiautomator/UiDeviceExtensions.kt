@@ -29,8 +29,8 @@ private val UiDevice.recentAppsOverviewPanelSelector: BySelector
  * @return the package name of the device's default launcher (a.k.a. home) app.
  */
 private val UiDevice.launcherPackage: String
-    get() = if (Build.VERSION.SDK_INT == Build.VERSION_CODES.R && productName.startsWith("sdk_gphone_")) {
-        // we're returning a hardcoded launcher package name because the UiDevice.getLauncherPackageName() method returns "com.android.settings" when run in an Android 11 emulator device (which is incorrect)
+    get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && productName.startsWith("sdk_gphone")) {
+        // we're returning a hardcoded launcher package name because the UiDevice.getLauncherPackageName() method returns "com.android.settings" when run in an Android 11+ emulator device (which is incorrect)
         "com.google.android.apps.nexuslauncher"
     } else {
         launcherPackageName
