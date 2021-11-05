@@ -22,18 +22,30 @@ private val UiDevice.recentAppsOverviewPanelSelector: BySelector
  * The package name of the device's launcher app.
  *
  * This method exists as a proxy for the [UiDevice.getLauncherPackageName] method
- * because that method returns `"com.android.settings"` (incorrectly) when run in an Android 11 emulator device.
+ * because that method returns `"com.android.settings"` when run in an Android 11+ device
+ * due to package visibility changes introduced in Android 11.
  *
- * TODO: Remove this method and call into [UiDevice.getLauncherPackageName] directly when the following issue is resolved: [https://issuetracker.google.com/issues/178965163](https://issuetracker.google.com/issues/178965163).
+ * This method assumes that the Android 11+ device on which the tests are being run
+ * has not changed its default launcher app from the one that the device shipped with.
+ *
+ * The following issue describes the problem with the [UiDevice.getLauncherPackageName] method
+ * in greater detail: [https://github.com/android/android-test/issues/1183](https://github.com/android/android-test/issues/1183)
  *
  * @return the package name of the device's default launcher (a.k.a. home) app.
  */
 private val UiDevice.launcherPackage: String
-    get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && productName.startsWith("sdk_gphone")) {
-        // we're returning a hardcoded launcher package name because the UiDevice.getLauncherPackageName() method returns "com.android.settings" when run in an Android 11+ emulator device (which is incorrect)
-        "com.google.android.apps.nexuslauncher"
-    } else {
-        launcherPackageName
+    get() {
+        val launcherPackageName = launcherPackageName
+
+        if (launcherPackageName == "com.android.settings" && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (Build.MANUFACTURER.equals("google", ignoreCase = true)) {
+                return "com.google.android.apps.nexuslauncher"
+            } else if (Build.MANUFACTURER.equals("motorola", ignoreCase = true)) {
+                return "com.motorola.launcher3"
+            }
+        }
+
+        return launcherPackageName
     }
 
 /**
