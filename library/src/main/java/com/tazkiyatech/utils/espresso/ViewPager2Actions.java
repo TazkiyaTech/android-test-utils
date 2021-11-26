@@ -18,6 +18,12 @@ import org.hamcrest.Matcher;
  * with a small number of modifications to make it work for
  * {@link ViewPager2} instead of
  * <a href="https://developer.android.com/reference/kotlin/androidx/viewpager/widget/ViewPager">ViewPager</a>.
+ * <p>
+ * I have created an issue in the ViewPager2 IssueTracker space
+ * <a href="https://issuetracker.google.com/issues/207785217">here</a>
+ * requesting for this class to be added in a {@code viewpager2-testing} library within the
+ * <a href="https://maven.google.com/web/index.html#androidx.viewpager2">androidx.viewpager2</a>
+ * group.
  */
 public final class ViewPager2Actions {
 
