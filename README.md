@@ -29,5 +29,5 @@ To use the above utilities within your app simply add the following repository a
         mavenCentral()
     }
     dependencies {
-        androidTestImplementation 'com.tazkiyatech:android-test-utils:1.2.0'
+        androidTestImplementation 'com.tazkiyatech:android-test-utils:1.3.0-alpha1'
     }
