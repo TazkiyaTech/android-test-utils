@@ -16,6 +16,7 @@ object TabViewMatchers {
     }
 
     /**
+     * @param text The text to match on.
      * @return A matcher that matches a [TabLayout.TabView] which has the given text.
      */
     fun withTabText(text: String): Matcher<View> {
