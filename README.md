@@ -5,6 +5,7 @@ This library contains classes and methods designed to ease the writing of Androi
 ## Espresso
 
 * [RecyclerViewMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/RecyclerViewMatchers.kt) – Provides methods for matching on a [RecyclerView](https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView) in a UI test.
+* [TabViewMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/TabViewMatchers.kt) – Provides methods for matching on a [TabLayout.TabView](https://developer.android.com/reference/com/google/android/material/tabs/TabLayout.TabView) in a UI test.
 * [TextViewMatchers](library/src/main/java/com/tazkiyatech/utils/espresso/TextViewMatchers.kt) – Provides methods for matching on a [TextView](https://developer.android.com/reference/android/widget/TextView) in a UI test.
 * [ViewActions](library/src/main/java/com/tazkiyatech/utils/espresso/ViewActions.kt) – Provides a method for waiting on a [View](https://developer.android.com/reference/android/view/View) to match a certain condition in a UI test.
 * [ViewInteractionExtensions](library/src/main/java/com/tazkiyatech/utils/espresso/ViewInteractionExtensions.kt) – Provides extension functions on the [ViewInteraction](https://developer.android.com/reference/androidx/test/espresso/ViewInteraction) class to improve the fluency of view actions and view matches in UI tests.
@@ -29,5 +30,5 @@ To use the above utilities within your app simply add the following repository a
         mavenCentral()
     }
     dependencies {
-        androidTestImplementation 'com.tazkiyatech:android-test-utils:1.2.0'
+        androidTestImplementation 'com.tazkiyatech:android-test-utils:1.3.0'
     }
