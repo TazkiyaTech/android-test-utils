@@ -12,18 +12,14 @@ import java.util.concurrent.TimeoutException
 object ViewActions {
 
     /**
-     * @return a [WaitForMatchAction] instance created with the given [matcher] and [timeout] parameters.
+     * @param matcher The [Matcher] to wait for.
+     * @param timeout The length of time in milliseconds to wait for.
+     * @return A [ViewAction] that waits up to [timeout] milliseconds for a [View] to match the given [Matcher].
      */
     fun waitForMatch(matcher: Matcher<View>, timeout: Long = 3000L): ViewAction {
         return WaitForMatchAction(matcher, timeout)
     }
 
-    /**
-     * A [ViewAction] that waits up to [timeout] milliseconds for a [View] to match the given [Matcher].
-     *
-     * @param matcher the [Matcher] to wait for.
-     * @param timeout the length of time in milliseconds to wait for.
-     */
     private class WaitForMatchAction(private val matcher: Matcher<View>,
                                      private val timeout: Long) : ViewAction {
 

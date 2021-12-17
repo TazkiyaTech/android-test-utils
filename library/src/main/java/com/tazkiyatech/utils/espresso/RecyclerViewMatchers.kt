@@ -11,22 +11,27 @@ import org.hamcrest.TypeSafeMatcher
 object RecyclerViewMatchers {
 
     /**
-     * @return an instance of [HasAdapterSizeMatcher] created with the given [size] parameter.
+     * @param size The number of items in the adapter of the [RecyclerView] to match on.
+     * @return A matcher that matches a [RecyclerView] which contains an adapter with the given number of items.
      */
     fun hasAdapterSize(size: Int): Matcher<View> {
         return HasAdapterSizeMatcher(size)
     }
 
     /**
-     * @return an instance of [WithPositionInRecyclerViewMatcher] created with the given parameters.
+     * Note that it's necessary to scroll the [RecyclerView] to the desired position or close to the desired position
+     * before attempting to match the child [View] at that position.
+     * Otherwise, it's likely that the [RecyclerView] will not have rendered the child [View] at that position.
+     *
+     * @param recyclerViewId The resource id of the [RecyclerView] which contains the child [View] to match on.
+     * @param position The index of the child [View] to match on.
+     * @return A matcher that matches the child [View] at the given position
+     * within the [RecyclerView] which has the given resource id.
      */
     fun withPositionInRecyclerView(@IdRes recyclerViewId: Int, position: Int): Matcher<View> {
         return WithPositionInRecyclerViewMatcher(recyclerViewId, position)
     }
 
-    /**
-     * A matcher that matches a [RecyclerView] which contains an adapter with the given number of items.
-     */
     private class HasAdapterSizeMatcher(private val size: Int) :
         BoundedMatcher<View, RecyclerView>(RecyclerView::class.java) {
 
@@ -42,15 +47,10 @@ object RecyclerViewMatchers {
         }
     }
 
-    /**
-     * A matcher that matches the child [View] at the given position
-     * within the [RecyclerView] which has the given resource id.
-     *
-     * Note that it's necessary to scroll the [RecyclerView] to the desired position
-     * before attempting to match the child [View] at that position.
-     */
-    private class WithPositionInRecyclerViewMatcher(@IdRes private val recyclerViewId: Int,
-                                                    private val position: Int) : TypeSafeMatcher<View>() {
+    private class WithPositionInRecyclerViewMatcher(
+        @IdRes private val recyclerViewId: Int,
+        private val position: Int
+    ) : TypeSafeMatcher<View>() {
 
         override fun describeTo(description: Description) {
             description.appendText("with position $position in RecyclerView which has id $recyclerViewId")
@@ -63,8 +63,8 @@ object RecyclerViewMatchers {
             if (parent.id != recyclerViewId)
                 return false
 
-            val viewHolder: RecyclerView.ViewHolder = parent.findViewHolderForAdapterPosition(position)
-                ?: return false // has no item on such position
+            val viewHolder = parent.findViewHolderForAdapterPosition(position)
+                ?: return false
 
             return item == viewHolder.itemView
         }

@@ -12,7 +12,7 @@ import org.hamcrest.Matchers.not
 object ViewMatchers {
 
     /**
-     * @return a [Matcher] that matches a [View] if it has a descendant in its view hierarchy
+     * @return A [Matcher] that matches a [View] if it has a descendant in its view hierarchy
      * which has the given id and text.
      */
     fun hasDescendantWithIdAndText(@IdRes id: Int, text: String): Matcher<View> {
@@ -20,7 +20,7 @@ object ViewMatchers {
     }
 
     /**
-     * @return a [Matcher] that matches a [View] if it has a descendant in its view hierarchy
+     * @return A [Matcher] that matches a [View] if it has a descendant in its view hierarchy
      * which has the given id and substring.
      */
     fun hasDescendantWithIdAndSubstring(@IdRes id: Int, @StringRes stringResourceId: Int): Matcher<View> {

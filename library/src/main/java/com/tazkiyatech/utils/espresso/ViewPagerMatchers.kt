@@ -9,15 +9,13 @@ import org.hamcrest.Matcher
 object ViewPagerMatchers {
 
     /**
-     * @return an instance of [WithCurrentItemMatcher] created with the given [item] parameter.
+     * @param item The page index to match on.
+     * @return A matcher that matches a [ViewPager] which has the given page index as its currently selected page.
      */
     fun withCurrentItem(item: Int): Matcher<View> {
         return WithCurrentItemMatcher(item)
     }
 
-    /**
-     * A matcher that matches a [ViewPager] which has the given page index as its currently selected page.
-     */
     private class WithCurrentItemMatcher(private val item: Int) :
         BoundedMatcher<View, ViewPager>(ViewPager::class.java) {
 

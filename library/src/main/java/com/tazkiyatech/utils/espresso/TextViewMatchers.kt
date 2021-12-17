@@ -14,9 +14,9 @@ import org.hamcrest.Matcher
 object TextViewMatchers {
 
     /**
-     * @param resourceId the identifier of the [String] resource
+     * @param resourceId The identifier of the [String] resource
      * which the [android.widget.TextView] is expected to contain.
-     * @return a matcher that matches a descendant of [android.widget.TextView]
+     * @return A matcher that matches a descendant of [android.widget.TextView]
      * which fully or partially contains the string associated with the given resource id.
      */
     fun withSubstring(@StringRes resourceId: Int): Matcher<View> {
@@ -26,7 +26,10 @@ object TextViewMatchers {
     }
 
     /**
-     * Matches a [TextView] if its text is equal to the string associated with the given resource id
+     * @param resourceId The identifier of the [String] resource
+     * which the [android.widget.TextView] is expected to contain.
+     * @return A matcher that matches a [TextView]
+     * if its text is equal to the string associated with the given resource id
      * when all HTML tags are ignored from both items in the comparison.
      */
     fun withHtmlText(@StringRes resourceId: Int): BoundedMatcher<View, TextView> {
