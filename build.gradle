@@ -1,5 +1,8 @@
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext {
+        junit5_version = '5.8.2'
+        kotlin_version = '1.6.10'
+    }
 
     repositories {
         google()
@@ -24,5 +27,5 @@ allprojects {
 }
 
 wrapper {
-    gradleVersion = '7.3.3'
+    gradleVersion = '7.4.2'
 }
