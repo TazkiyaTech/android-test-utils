@@ -13,7 +13,7 @@ import org.junit.Test
 class TabViewMatchersTest {
 
     private val context: Context
-        get() = InstrumentationRegistry.getInstrumentation().targetContext
+        get() = InstrumentationRegistry.getInstrumentation().context
 
     @Test
     fun isSelectedTab() {

@@ -1,0 +1,4 @@
+<resources>
+    <string name="lorem_ipsum_long_version">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed enim diam, luctus sit amet lacus eget, consequat blandit felis.</string>
+    <string name="lorem_ipsum_short_version">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+</resources>

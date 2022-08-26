@@ -1,16 +1,16 @@
 package com.tazkiyatech.utils.espresso
 
-import android.R
 import android.content.Context
 import android.widget.TextView
 import androidx.test.platform.app.InstrumentationRegistry
+import com.tazkiyatech.utils.test.R
 import org.junit.Assert.assertThat
 import org.junit.Test
 
 class TextViewMatchersTest {
 
     private val context: Context
-        get() = InstrumentationRegistry.getInstrumentation().targetContext
+        get() = InstrumentationRegistry.getInstrumentation().context
 
     @Test
     fun withSubstring() {
@@ -18,9 +18,9 @@ class TextViewMatchersTest {
         val textView = TextView(context)
 
         // When.
-        textView.text = context.getString(R.string.copy) + " " + context.getString(R.string.cut)
+        textView.text = context.getString(R.string.lorem_ipsum_long_version)
 
         // Then.
-        assertThat(textView, TextViewMatchers.withSubstring(R.string.cut))
+        assertThat(textView, TextViewMatchers.withSubstring(R.string.lorem_ipsum_short_version))
     }
 }

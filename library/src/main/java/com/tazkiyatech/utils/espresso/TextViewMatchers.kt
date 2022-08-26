@@ -24,41 +24,4 @@ object TextViewMatchers {
         val substring = applicationContext.getString(resourceId)
         return ViewMatchers.withSubstring(substring)
     }
-
-    /**
-     * @param resourceId The identifier of the [String] resource
-     * which the [android.widget.TextView] is expected to contain.
-     * @return A matcher that matches a [TextView]
-     * if its text is equal to the string associated with the given resource id
-     * when all HTML tags are ignored from both items in the comparison.
-     */
-    fun withHtmlText(@StringRes resourceId: Int): BoundedMatcher<View, TextView> {
-        return WithHtmlText(resourceId)
-    }
-
-    private class WithHtmlText(@StringRes val resourceId: Int) :
-        BoundedMatcher<View, TextView>(TextView::class.java) {
-
-        private var expectedText: String? = null
-        private var resourceName: String? = null
-
-        override fun describeTo(description: Description) {
-            description.appendText("with text from resource id: ").appendValue(resourceId)
-            resourceName?.let {
-                description.appendText("[").appendText(it).appendText("]")
-            }
-            expectedText?.let {
-                description.appendText(" value: ").appendText(it)
-            }
-        }
-
-        override fun matchesSafely(textView: TextView): Boolean {
-            val source = textView.resources.getString(resourceId)
-
-            expectedText = HtmlCompat.fromHtml(source, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
-            resourceName = textView.resources.getResourceEntryName(resourceId)
-
-            return textView.text.toString() == expectedText
-        }
-    }
 }
