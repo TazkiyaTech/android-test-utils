@@ -1,3 +1,3 @@
--keep public interface com.tazkiyatech.utils.test.** { *; }
--keep public class com.tazkiyatech.utils.test.** { *; }
--keep public enum com.tazkiyatech.utils.test.** { *; }
+-keep public interface com.tazkiyatech.utils.** { *; }
+-keep public class com.tazkiyatech.utils.** { *; }
+-keep public enum com.tazkiyatech.utils.** { *; }
