@@ -15,6 +15,14 @@ import org.hamcrest.Matchers.*
 object MenuDropDownListViewMatchers {
 
     /**
+     * Creates a [Matcher] that matches a [View] of type `MenuPopupWindow.MenuDropDownListView`.
+     *
+     * Here's a usage example:
+     *
+     * ```
+     * onView(isMenuDropDownListView()).checkMatches(hasChildCount(3)
+     * ```
+     *
      * @return A [Matcher] that matches a [View] of type `MenuPopupWindow.MenuDropDownListView`.
      */
     fun isMenuDropDownListView(): Matcher<View> {
@@ -25,8 +33,17 @@ object MenuDropDownListViewMatchers {
     }
 
     /**
+     * Creates a [Matcher] that matches the child [View]
+     * at the given position within a `MenuPopupWindow.MenuDropDownListView` instance.
+     *
+     * Here's a usage example:
+     *
+     * ```
+     * onView(withPositionInMenuDropDownListView(1)).perform(click())
+     * ```
+     *
      * @param position The index of the child [View] to match on.
-     * @return A matcher that matches the child [View]
+     * @return A [Matcher] that matches the child [View]
      * at the given position within a `MenuPopupWindow.MenuDropDownListView` instance.
      */
     fun withPositionInMenuDropDownListView(position: Int): Matcher<View> {
