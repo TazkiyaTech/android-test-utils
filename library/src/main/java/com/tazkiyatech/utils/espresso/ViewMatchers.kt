@@ -12,27 +12,47 @@ import org.hamcrest.Matchers.not
 object ViewMatchers {
 
     /**
-     * @return A [Matcher] that matches a [View] if it has a descendant in its view hierarchy
-     * which has the given id and text.
+     * Returns a [Matcher] that matches a [View] if it has a descendant in its view hierarchy
+     * which has the given id and text. For example:
+     *
+     * ```
+     * onView(
+     *     withId(R.id.viewGroup)
+     * ).checkMatches(
+     *     hasDescendantWithIdAndSubstring(R.id.textView, "Hello")
+     * )
+     * ```
      */
     fun hasDescendantWithIdAndText(@IdRes id: Int, text: String): Matcher<View> {
         return hasDescendant(allOf(withId(id), withText(text)))
     }
 
     /**
-     * @return A [Matcher] that matches a [View] if it has a descendant in its view hierarchy
-     * which has the given id and substring.
+     * Returns a [Matcher] that matches a [View] if it has a descendant in its view hierarchy
+     * which has the given id and substring. For example:
+     *
+     * ```
+     * onView(
+     *     withId(R.id.viewGroup)
+     * ).checkMatches(
+     *     hasDescendantWithIdAndSubstring(R.id.textView, R.string.hello)
+     * )
+     * ```
      */
     fun hasDescendantWithIdAndSubstring(@IdRes id: Int, @StringRes stringResourceId: Int): Matcher<View> {
         return hasDescendant(allOf(withId(id), withSubstring(stringResourceId)))
     }
 
     /**
-     * Provides a nicer alternative to calling `not(isDisplayed())`.
+     * Provides a nicer alternative to calling `not(isDisplayed())`. For example:
+     *
+     * ```
+     * onView(withId(R.id.button)).checkMatches(notDisplayed())
+     * ```
      *
      * @see androidx.test.espresso.matcher.ViewMatchers.isDisplayed
      */
-    fun isNotDisplayed(): Matcher<View> {
+    fun notDisplayed(): Matcher<View> {
         return not(isDisplayed())
     }
 }
