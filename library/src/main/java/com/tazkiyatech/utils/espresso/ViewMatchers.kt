@@ -19,7 +19,7 @@ object ViewMatchers {
      * onView(
      *     withId(R.id.viewGroup)
      * ).checkMatches(
-     *     hasDescendantWithIdAndSubstring(R.id.textView, "Hello")
+     *     hasDescendantWithIdAndText(R.id.textView, "Hello")
      * )
      * ```
      */
