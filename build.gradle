@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        junit5_version = '5.8.2'
+        junit5_version = '5.9.1'
         kotlin_version = '1.6.10'
     }
 
