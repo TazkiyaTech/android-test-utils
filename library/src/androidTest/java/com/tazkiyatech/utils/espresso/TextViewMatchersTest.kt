@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.TextView
 import androidx.test.platform.app.InstrumentationRegistry
 import com.tazkiyatech.utils.test.R
-import org.junit.Assert.assertThat
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
 class TextViewMatchersTest {

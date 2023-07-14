@@ -1,7 +1,7 @@
 package com.tazkiyatech.utils.text
 
 import com.tazkiyatech.utils.text.IsEqualCompressingDirectionalFormattingCharactersMatcher.Companion.equalToCompressingDirectionalFormattingCharacters
-import org.junit.Assert.assertThat
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.Arguments.arguments

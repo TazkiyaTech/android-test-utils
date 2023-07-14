@@ -6,8 +6,8 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.google.android.material.tabs.TabLayout
 import com.tazkiyatech.utils.espresso.TabViewMatchers.withTabText
 import com.tazkiyatech.utils.test.R
+import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.not
-import org.junit.Assert.assertThat
 import org.junit.Test
 
 class TabViewMatchersTest {

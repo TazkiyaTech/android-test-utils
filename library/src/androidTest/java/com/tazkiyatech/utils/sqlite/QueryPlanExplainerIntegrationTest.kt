@@ -33,7 +33,7 @@ class QueryPlanExplainerIntegrationTest {
     @Test
     fun explainQueryPlanForSelectStatement_when_no_where_clause_provided_1() {
         // Given.
-        val expected = listOf(QueryPlanRow("SCAN TABLE TableA"))
+        val expected = listOf(QueryPlanRow("SCAN TableA"))
 
         // When.
         val actual = queryPlanExplainer.explainQueryPlanForSqlStatement("SELECT * FROM TableA")
@@ -45,7 +45,7 @@ class QueryPlanExplainerIntegrationTest {
     @Test
     fun explainQueryPlanForSelectStatement_when_no_where_clause_provided_2() {
         // Given.
-        val expected = listOf(QueryPlanRow("SCAN TABLE TableA"))
+        val expected = listOf(QueryPlanRow("SCAN TableA"))
 
         // When.
         val actual = queryPlanExplainer.explainQueryPlanForSelectStatement(
@@ -66,7 +66,7 @@ class QueryPlanExplainerIntegrationTest {
     @Test
     fun explainQueryPlanForUpdateStatement_when_no_where_clause_provided_1() {
         // Given.
-        val expected = listOf(QueryPlanRow("SCAN TABLE TableA"))
+        val expected = listOf(QueryPlanRow("SCAN TableA"))
 
         // When.
         val actual = queryPlanExplainer.explainQueryPlanForSqlStatement("UPDATE TableA SET ColumnB = 1")
@@ -78,7 +78,7 @@ class QueryPlanExplainerIntegrationTest {
     @Test
     fun explainQueryPlanForUpdateStatement_when_no_where_clause_provided_2() {
         // Given.
-        val expected = listOf(QueryPlanRow("SCAN TABLE TableA"))
+        val expected = listOf(QueryPlanRow("SCAN TableA"))
 
         // When.
         val actual = queryPlanExplainer.explainQueryPlanForUpdateStatement(
@@ -96,7 +96,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnA_1() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INTEGER PRIMARY KEY (rowid=?)")
+            QueryPlanRow("SEARCH TableA USING INTEGER PRIMARY KEY (rowid=?)")
         )
 
         // When.
@@ -112,7 +112,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnA_2() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INTEGER PRIMARY KEY (rowid=?)")
+            QueryPlanRow("SEARCH TableA USING INTEGER PRIMARY KEY (rowid=?)")
         )
 
         // When.
@@ -134,7 +134,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForUpdateStatement_when_where_clause_matches_ColumnA_1() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INTEGER PRIMARY KEY (rowid=?)")
+            QueryPlanRow("SEARCH TableA USING INTEGER PRIMARY KEY (rowid=?)")
         )
 
         // When.
@@ -150,7 +150,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForUpdateStatement_when_where_clause_matches_ColumnA_2() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INTEGER PRIMARY KEY (rowid=?)")
+            QueryPlanRow("SEARCH TableA USING INTEGER PRIMARY KEY (rowid=?)")
         )
 
         // When.
@@ -168,7 +168,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_1() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)")
+            QueryPlanRow("SEARCH TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)")
         )
 
         // When.
@@ -184,7 +184,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_2() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)")
+            QueryPlanRow("SEARCH TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)")
         )
 
         // When.
@@ -206,7 +206,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForUpdateStatement_when_where_clause_matches_ColumnB_1() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)")
+            QueryPlanRow("SEARCH TableA USING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)")
         )
 
         // When.
@@ -222,7 +222,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForUpdateStatement_when_where_clause_matches_ColumnB_2() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)")
+            QueryPlanRow("SEARCH TableA USING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)")
         )
 
         // When.
@@ -240,7 +240,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnC_1() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
+            QueryPlanRow("SEARCH TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
         )
 
         // When.
@@ -256,7 +256,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnC_2() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
+            QueryPlanRow("SEARCH TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
         )
 
         // When.
@@ -278,7 +278,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForUpdateStatement_when_where_clause_matches_ColumnC_1() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
+            QueryPlanRow("SEARCH TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
         )
 
         // When.
@@ -294,7 +294,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForUpdateStatement_when_where_clause_matches_ColumnC_2() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
+            QueryPlanRow("SEARCH TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
         )
 
         // When.
@@ -312,7 +312,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_and_ColumnC_1() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=? AND ColumnC=?)")
+            QueryPlanRow("SEARCH TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=? AND ColumnC=?)")
         )
 
         // When.
@@ -328,7 +328,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_and_ColumnC_2() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=? AND ColumnC=?)")
+            QueryPlanRow("SEARCH TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=? AND ColumnC=?)")
         )
 
         // When.
@@ -350,7 +350,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForUpdateStatement_when_where_clause_matches_ColumnB_and_ColumnC_1() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnB_ColumnC_on_TableA (ColumnB=? AND ColumnC=?)")
+            QueryPlanRow("SEARCH TableA USING INDEX ColumnB_ColumnC_on_TableA (ColumnB=? AND ColumnC=?)")
         )
 
         // When.
@@ -366,7 +366,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForUpdateStatement_when_where_clause_matches_ColumnB_and_ColumnC_2() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnB_ColumnC_on_TableA (ColumnB=? AND ColumnC=?)")
+            QueryPlanRow("SEARCH TableA USING INDEX ColumnB_ColumnC_on_TableA (ColumnB=? AND ColumnC=?)")
         )
 
         // When.
@@ -387,14 +387,14 @@ class QueryPlanExplainerIntegrationTest {
             listOf(
                 QueryPlanRow("MULTI-INDEX OR"),
                 QueryPlanRow("INDEX 1"),
-                QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
+                QueryPlanRow("SEARCH TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
                 QueryPlanRow("INDEX 2"),
-                QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
+                QueryPlanRow("SEARCH TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
             )
         } else {
             listOf(
-                QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
-                QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
+                QueryPlanRow("SEARCH TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
+                QueryPlanRow("SEARCH TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
             )
         }
 
@@ -414,14 +414,14 @@ class QueryPlanExplainerIntegrationTest {
             listOf(
                 QueryPlanRow("MULTI-INDEX OR"),
                 QueryPlanRow("INDEX 1"),
-                QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
+                QueryPlanRow("SEARCH TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
                 QueryPlanRow("INDEX 2"),
-                QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
+                QueryPlanRow("SEARCH TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
             )
         } else {
             listOf(
-                QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
-                QueryPlanRow("SEARCH TABLE TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
+                QueryPlanRow("SEARCH TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
+                QueryPlanRow("SEARCH TableA USING INDEX ColumnC_on_TableA (ColumnC=?)")
             )
         }
 
@@ -444,7 +444,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_and_orderBy_matches_ColumnA_1() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
+            QueryPlanRow("SEARCH TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
             QueryPlanRow("USE TEMP B-TREE FOR ORDER BY")
         )
 
@@ -461,7 +461,7 @@ class QueryPlanExplainerIntegrationTest {
     fun explainQueryPlanForSelectStatement_when_where_clause_matches_ColumnB_and_orderBy_matches_ColumnA_2() {
         // Given.
         val expected = listOf(
-            QueryPlanRow("SEARCH TABLE TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
+            QueryPlanRow("SEARCH TableA USING COVERING INDEX ColumnB_ColumnC_on_TableA (ColumnB=?)"),
             QueryPlanRow("USE TEMP B-TREE FOR ORDER BY")
         )
 
