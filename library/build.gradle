@@ -1,21 +1,18 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
-apply plugin: 'org.jetbrains.dokka'
+apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'signing'
 
 group = getProperty('projectGroupName')
 version = getProperty('projectVersionName')
 
-File[] proGuardFileCollection = file('./proguard').listFiles()
-File[] proGuardDebugFileCollection = file('./proguard-debug').listFiles()
-
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
+    namespace 'com.tazkiyatech.utils'
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 33
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
@@ -23,30 +20,32 @@ android {
         debug {
             minifyEnabled false
             shrinkResources false
-            proguardFile(getDefaultProguardFile('proguard-android.txt'))
-            proguardFiles(proGuardFileCollection)
-            proguardFiles(proGuardDebugFileCollection)
         }
 
         release {
             minifyEnabled false
             shrinkResources false
-            proguardFile(getDefaultProguardFile('proguard-android.txt'))
-            proguardFiles(proGuardFileCollection)
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = JavaVersion.VERSION_11
     }
 
     lintOptions {
         abortOnError true
+    }
+
+    publishing {
+        singleVariant('release') {
+            withJavadocJar()
+            withSourcesJar()
+        }
     }
 
     testOptions {
@@ -68,26 +67,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
 }
 
-task generateSourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    archiveClassifier.set('sources')
-    group = 'build'
-}
-
-task generateJavadocJar(type: Jar) {
-    from dokkaJavadoc
-    classifier 'javadoc'
-    description = "Builds up a jar of this module's Javadoc."
-    group = 'build'
-}
-
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
                 from components.release
-                artifact generateJavadocJar
-                artifact generateSourcesJar
 
                 groupId getProperty('projectGroupName')
                 artifactId getProperty('projectArtifactName')
@@ -120,15 +104,6 @@ afterEvaluate {
                         url = 'https://github.com/TazkiyaTech/android-test-utils'
                     }
                 }
-            }
-            debug(MavenPublication) {
-                from components.debug
-                artifact generateJavadocJar
-                artifact generateSourcesJar
-
-                groupId getProperty('projectGroupName')
-                artifactId getProperty('projectArtifactName')
-                version getProperty('projectVersionName')
             }
         }
 
