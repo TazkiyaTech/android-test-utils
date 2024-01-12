@@ -1,36 +1,38 @@
-apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
-apply plugin: 'org.jetbrains.kotlin.android'
-apply plugin: 'signing'
+plugins {
+    id("com.android.library")
+    id("maven-publish")
+    id("org.jetbrains.kotlin.android")
+    id("signing")
+}
 
-group = getProperty('projectGroupName')
-version = getProperty('projectVersionName')
+group = getProperty("projectGroupName")
+version = getProperty("projectVersionName")
 
 android {
-    compileSdk 34
-    namespace 'com.tazkiyatech.utils'
+    compileSdk = 34
+    namespace = "com.tazkiyatech.utils"
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdk 34
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        minSdk = 21
+        targetSdk = 34
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         debug {
-            minifyEnabled false
-            shrinkResources false
+            minifyEnabled = false
+            shrinkResources = false
         }
 
         release {
-            minifyEnabled false
-            shrinkResources false
+            minifyEnabled = false
+            shrinkResources = false
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility(JavaVersion.VERSION_17)
+        targetCompatibility(JavaVersion.VERSION_17)
     }
 
     kotlinOptions {
@@ -38,11 +40,11 @@ android {
     }
 
     lintOptions {
-        abortOnError true
+        abortOnError = true
     }
 
     publishing {
-        singleVariant('release') {
+        singleVariant("release") {
             withJavadocJar()
             withSourcesJar()
         }
@@ -56,15 +58,15 @@ android {
 }
 
 dependencies {
-    api 'androidx.test.espresso:espresso-contrib:3.5.1'
-    api 'androidx.test.uiautomator:uiautomator:2.2.0'
-    implementation 'androidx.test:core:1.5.0'
+    api("androidx.test.espresso:espresso-contrib:3.5.1")
+    api("androidx.test.uiautomator:uiautomator:2.2.0")
+    implementation("androidx.test:core:1.5.0")
 
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5_version"
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:$junit5_version"
-    testImplementation "org.junit.jupiter:junit-jupiter-params:$junit5_version"
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junit5_version")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5_version")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:$junit5_version")
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
 }
 
 afterEvaluate {
@@ -73,35 +75,35 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
 
-                groupId getProperty('projectGroupName')
-                artifactId getProperty('projectArtifactName')
-                version getProperty('projectVersionName')
+                groupId getProperty("projectGroupName")
+                artifactId getProperty("projectArtifactName")
+                version getProperty("projectVersionName")
 
                 pom {
-                    name = getProperty('projectArtifactName')
-                    description = 'An Android library containing classes and methods designed to ease the writing of Android instrumentation tests.'
-                    url = 'https://github.com/TazkiyaTech/android-test-utils'
+                    name = getProperty("projectArtifactName")
+                    description = "An Android library containing classes and methods designed to ease the writing of Android instrumentation tests."
+                    url = "https://github.com/TazkiyaTech/android-test-utils"
                     licenses {
                         license {
-                            name = 'The Apache License, Version 2.0'
-                            url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                            name = "The Apache License, Version 2.0"
+                            url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
                         }
                     }
                     organization {
-                        name = 'Tazkiya Tech'
-                        url = 'http://tazkiyatech.com'
+                        name = "Tazkiya Tech"
+                        url = "http://tazkiyatech.com"
                     }
                     developers {
                         developer {
-                            id = 'adil-hussain-84'
-                            name = 'Adil Hussain'
-                            email = 'adilson05uk@gmail.com'
+                            id = "adil-hussain-84"
+                            name = "Adil Hussain"
+                            email = "adilson05uk@gmail.com"
                         }
                     }
                     scm {
-                        connection = 'scm:git:git://github.com/TazkiyaTech/android-test-utils.git'
-                        developerConnection = 'scm:git:ssh://github.com:TazkiyaTech/android-test-utils.git'
-                        url = 'https://github.com/TazkiyaTech/android-test-utils'
+                        connection = "scm:git:git://github.com/TazkiyaTech/android-test-utils.git"
+                        developerConnection = "scm:git:ssh://github.com:TazkiyaTech/android-test-utils.git"
+                        url = "https://github.com/TazkiyaTech/android-test-utils"
                     }
                 }
             }
@@ -109,10 +111,10 @@ afterEvaluate {
 
         repositories {
             maven {
-                url 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+                url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
                 credentials {
-                    username getProperty('sonatype_username')
-                    password getProperty('sonatype_password')
+                    username getProperty("sonatype_username")
+                    password getProperty("sonatype_password")
                 }
             }
         }
