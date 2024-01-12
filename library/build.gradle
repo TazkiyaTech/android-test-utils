@@ -7,12 +7,12 @@ group = getProperty('projectGroupName')
 version = getProperty('projectVersionName')
 
 android {
-    compileSdkVersion 33
+    compileSdk 34
     namespace 'com.tazkiyatech.utils'
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdk 34
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
@@ -29,12 +29,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11
+        jvmTarget = JavaVersion.VERSION_17
     }
 
     lintOptions {
