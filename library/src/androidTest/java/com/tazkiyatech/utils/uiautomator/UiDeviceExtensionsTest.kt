@@ -17,4 +17,13 @@ class UiDeviceExtensionsTest {
         // Then.
         uiDevice.waitOnLauncher()
     }
+
+    @Test
+    fun waitOnRecentApps() {
+        // When.
+        uiDevice.pressRecentApps()
+
+        // Then.
+        uiDevice.waitOnRecentApps()
+    }
 }
