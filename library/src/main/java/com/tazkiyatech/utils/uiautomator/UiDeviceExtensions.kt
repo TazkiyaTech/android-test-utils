@@ -3,8 +3,10 @@ package com.tazkiyatech.utils.uiautomator
 import android.os.Build
 import androidx.test.uiautomator.*
 import org.junit.Assert.fail
+import java.util.concurrent.TimeoutException
 
 private const val TIMEOUT_MILLIS: Long = 10_000L
+private const val TIMEOUT_SECONDS: Double = TIMEOUT_MILLIS / 1000.0
 
 /**
  * A [UiObject2] object which represents the overview panel that exists within the device's recent apps screen.
@@ -50,9 +52,21 @@ private val UiDevice.launcherPackage: String
 
 /**
  * Calls into the [UiDevice.wait] function with a `timeout` value of [TIMEOUT_MILLIS].
+ *
+ * @param condition The [SearchCondition] to evaluate.
+ * @return The final result returned by the [SearchCondition].
+ * @throws TimeoutException if the [SearchCondition] is not met.
  */
+@Throws(TimeoutException::class)
 fun <R> UiDevice.wait(condition: SearchCondition<R>): R {
-    return wait(condition, TIMEOUT_MILLIS)
+    val result = wait(condition, TIMEOUT_MILLIS)
+
+    @Suppress("KotlinConstantConditions")
+    if (result == null || result == false) {
+        throw TimeoutException("Waited on the search condition for $TIMEOUT_SECONDS seconds but it was not met.")
+    } else {
+        return result
+    }
 }
 
 /**
