@@ -5,7 +5,6 @@ import android.view.ContextThemeWrapper
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.android.material.tabs.TabLayout
 import com.tazkiyatech.utils.espresso.TabViewMatchers.withTabText
-import com.tazkiyatech.utils.test.R
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.not
 import org.junit.Test
@@ -18,7 +17,7 @@ class TabViewMatchersTest {
     @Test
     fun isSelectedTab() {
         // Given.
-        val tabLayout = TabLayout(ContextThemeWrapper(context, R.style.Theme_AppCompat))
+        val tabLayout = TabLayout(ContextThemeWrapper(context, androidx.appcompat.R.style.Theme_AppCompat))
 
         val tab1 = tabLayout.newTab()
         val tab2 = tabLayout.newTab()
@@ -42,7 +41,7 @@ class TabViewMatchersTest {
     @Test
     fun withTabText() {
         // Given.
-        val tabLayout = TabLayout(ContextThemeWrapper(context, R.style.Theme_AppCompat))
+        val tabLayout = TabLayout(ContextThemeWrapper(context, androidx.appcompat.R.style.Theme_AppCompat))
         val tab = tabLayout.newTab()
 
         // When.
