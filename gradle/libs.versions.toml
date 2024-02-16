@@ -1,0 +1,16 @@
+[versions]
+junit5 = "5.10.2"
+
+[libraries]
+espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version = "3.5.1" }
+junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit5" }
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit5" }
+junit-jupiter-params = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junit5" }
+test-ext-junit = { group = "androidx.test.ext", name = "junit", version = "1.1.5" }
+test-core = { group = "androidx.test", name = "core", version = "1.5.0" }
+uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version = "2.2.0" }
+
+[plugins]
+android-library = { id = "com.android.library", version = "8.2.2" }
+benmanes-versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version = "1.9.22" }

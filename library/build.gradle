@@ -1,7 +1,7 @@
 plugins {
-    id("com.android.library")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
     id("maven-publish")
-    id("org.jetbrains.kotlin.android")
     id("signing")
 }
 
@@ -58,15 +58,15 @@ android {
 }
 
 dependencies {
-    api("androidx.test.espresso:espresso-contrib:3.5.1")
-    api("androidx.test.uiautomator:uiautomator:2.2.0")
-    implementation("androidx.test:core:1.5.0")
+    api(libs.espresso.contrib)
+    api(libs.uiautomator)
+    implementation(libs.test.core)
 
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.junit.jupiter.engine)
     testImplementation(libs.junit.jupiter.params)
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation(libs.test.ext.junit)
 }
 
 afterEvaluate {
