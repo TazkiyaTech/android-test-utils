@@ -8,7 +8,7 @@ junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engi
 junit-jupiter-params = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junit5" }
 test-ext-junit = { group = "androidx.test.ext", name = "junit", version = "1.1.5" }
 test-core = { group = "androidx.test", name = "core", version = "1.5.0" }
-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version = "2.2.0" }
+uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version = "2.3.0" }
 
 [plugins]
 android-library = { id = "com.android.library", version = "8.2.2" }
