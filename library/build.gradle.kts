@@ -62,57 +62,58 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            afterEvaluate {
                 from(components["release"])
+            }
 
-                groupId = project.properties["groupId"].toString()
-                artifactId = project.properties["artifactId"].toString()
-                version = project.properties["version"].toString()
+            groupId = project.properties["groupId"].toString()
+            artifactId = project.properties["artifactId"].toString()
+            version = project.properties["version"].toString()
 
-                pom {
-                    name = project.properties["artifactId"].toString()
-                    description = "An Android library containing classes and methods designed to ease the writing of Android instrumentation tests."
+            pom {
+                name = project.properties["artifactId"].toString()
+                description =
+                    "An Android library containing classes and methods designed to ease the writing of Android instrumentation tests."
+                url = "https://github.com/TazkiyaTech/android-test-utils"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                organization {
+                    name = "Tazkiya Tech"
+                    url = "http://tazkiyatech.com"
+                }
+                developers {
+                    developer {
+                        id = "adil-hussain-84"
+                        name = "Adil Hussain"
+                        email = "adilson05uk@gmail.com"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/TazkiyaTech/android-test-utils.git"
+                    developerConnection = "scm:git:ssh://github.com:TazkiyaTech/android-test-utils.git"
                     url = "https://github.com/TazkiyaTech/android-test-utils"
-                    licenses {
-                        license {
-                            name = "The Apache License, Version 2.0"
-                            url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-                        }
-                    }
-                    organization {
-                        name = "Tazkiya Tech"
-                        url = "http://tazkiyatech.com"
-                    }
-                    developers {
-                        developer {
-                            id = "adil-hussain-84"
-                            name = "Adil Hussain"
-                            email = "adilson05uk@gmail.com"
-                        }
-                    }
-                    scm {
-                        connection = "scm:git:git://github.com/TazkiyaTech/android-test-utils.git"
-                        developerConnection = "scm:git:ssh://github.com:TazkiyaTech/android-test-utils.git"
-                        url = "https://github.com/TazkiyaTech/android-test-utils"
-                    }
                 }
             }
         }
+    }
 
-        repositories {
-            maven {
-                name = "sonatype"
-                credentials(PasswordCredentials::class)
-                url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2//artifactory/libs-release")
-            }
+    repositories {
+        maven {
+            name = "sonatype"
+            credentials(PasswordCredentials::class)
+            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2//artifactory/libs-release")
         }
     }
+}
 
-    signing {
-        // the "signing.keyId", "signing.password" and "signing.secretKeyRingFile" properties required by this task are defined outside of this project in the "~/.gradle/gradle.properties" file
-        sign(publishing.publications["release"])
-    }
+signing {
+    // the "signing.keyId", "signing.password" and "signing.secretKeyRingFile" properties required by this task are defined outside of this project in the "~/.gradle/gradle.properties" file
+    sign(publishing.publications["release"])
 }
