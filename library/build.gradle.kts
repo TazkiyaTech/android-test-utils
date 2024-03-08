@@ -5,8 +5,8 @@ plugins {
     id("signing")
 }
 
-group = getProperty("projectGroupName")
-version = getProperty("projectVersionName")
+group = project.properties["projectGroupName"].toString()
+version = project.properties["projectVersionName"].toString()
 
 android {
     compileSdk = 34
@@ -20,26 +20,25 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled = false
-            shrinkResources = false
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
-
         release {
-            minifyEnabled = false
-            shrinkResources = false
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 
     compileOptions {
-        sourceCompatibility(JavaVersion.VERSION_17)
-        targetCompatibility(JavaVersion.VERSION_17)
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
-    lintOptions {
+    lint {
         abortOnError = true
     }
 
@@ -47,12 +46,6 @@ android {
         singleVariant("release") {
             withJavadocJar()
             withSourcesJar()
-        }
-    }
-
-    testOptions {
-        unitTests.all {
-            useJUnitPlatform()
         }
     }
 }
@@ -69,18 +62,22 @@ dependencies {
     androidTestImplementation(libs.test.ext.junit)
 }
 
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
 afterEvaluate {
     publishing {
         publications {
-            release(MavenPublication) {
-                from components.release
+            create<MavenPublication>("release") {
+                from(components["release"])
 
-                groupId getProperty("projectGroupName")
-                artifactId getProperty("projectArtifactName")
-                version getProperty("projectVersionName")
+                groupId = project.properties["projectGroupName"].toString()
+                artifactId = project.properties["projectArtifactName"].toString()
+                version = project.properties["projectVersionName"].toString()
 
                 pom {
-                    name = getProperty("projectArtifactName")
+                    name = project.properties["projectArtifactName"].toString()
                     description = "An Android library containing classes and methods designed to ease the writing of Android instrumentation tests."
                     url = "https://github.com/TazkiyaTech/android-test-utils"
                     licenses {
@@ -111,17 +108,15 @@ afterEvaluate {
 
         repositories {
             maven {
-                url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-                credentials {
-                    username getProperty("sonatype_username")
-                    password getProperty("sonatype_password")
-                }
+                name = "sonatype"
+                credentials(PasswordCredentials::class)
+                url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2//artifactory/libs-release")
             }
         }
     }
 
     signing {
-        // the 'signing.keyId', 'signing.password' and 'signing.secretKeyRingFile' properties required by this task are defined outside of this project in the '~/.gradle/gradle.properties' file
-        sign publishing.publications.release
+        // the "signing.keyId", "signing.password" and "signing.secretKeyRingFile" properties required by this task are defined outside of this project in the "~/.gradle/gradle.properties" file
+        sign(publishing.publications["release"])
     }
 }
