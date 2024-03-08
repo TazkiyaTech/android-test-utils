@@ -5,9 +5,6 @@ plugins {
     id("signing")
 }
 
-group = project.properties["groupId"].toString()
-version = project.properties["version"].toString()
-
 android {
     compileSdk = 34
     namespace = "com.tazkiyatech.utils"
