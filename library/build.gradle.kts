@@ -5,8 +5,8 @@ plugins {
     id("signing")
 }
 
-group = project.properties["projectGroupName"].toString()
-version = project.properties["projectVersionName"].toString()
+group = project.properties["groupId"].toString()
+version = project.properties["version"].toString()
 
 android {
     compileSdk = 34
@@ -72,12 +72,12 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 from(components["release"])
 
-                groupId = project.properties["projectGroupName"].toString()
-                artifactId = project.properties["projectArtifactName"].toString()
-                version = project.properties["projectVersionName"].toString()
+                groupId = project.properties["groupId"].toString()
+                artifactId = project.properties["artifactId"].toString()
+                version = project.properties["version"].toString()
 
                 pom {
-                    name = project.properties["projectArtifactName"].toString()
+                    name = project.properties["artifactId"].toString()
                     description = "An Android library containing classes and methods designed to ease the writing of Android instrumentation tests."
                     url = "https://github.com/TazkiyaTech/android-test-utils"
                     licenses {
