@@ -108,7 +108,7 @@ publishing {
         maven {
             name = "sonatype"
             credentials(PasswordCredentials::class)
-            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2//artifactory/libs-release")
+            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
         }
     }
 }
