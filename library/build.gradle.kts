@@ -69,9 +69,9 @@ publishing {
                 from(components["release"])
             }
 
-            groupId = project.properties["groupId"].toString()
-            artifactId = project.properties["artifactId"].toString()
-            version = project.properties["version"].toString()
+            groupId = properties["groupId"].toString()
+            artifactId = properties["artifactId"].toString()
+            version = properties["version"].toString()
 
             pom {
                 name = project.properties["artifactId"].toString()
