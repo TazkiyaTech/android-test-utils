@@ -9,6 +9,13 @@ import org.hamcrest.Matcher
 object ViewPagerMatchers {
 
     /**
+     * Creates a matcher that matches a [ViewPager] which has the given page index as its currently selected page.
+     *
+     * Usage example:
+     * ```
+     * onView(withId(R.id.viewPager)).check(matches(withCurrentItem(2)))
+     * ```
+     *
      * @param item The page index to match on.
      * @return A matcher that matches a [ViewPager] which has the given page index as its currently selected page.
      */

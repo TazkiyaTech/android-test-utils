@@ -43,7 +43,7 @@ private constructor(private val string: String) : TypeSafeMatcher<String>() {
          * Creates a matcher of `String` that matches when the examined string is equal to `expectedString`,
          * when directional formatting character differences are ignored.
          *
-         * Example usage:
+         * Usage example:
          * ```
          * assertThat("\u202DFoo bar baz\u202C", equalToCompressingDirectionalFormattingCharacters("Foo bar baz"))
          * ```

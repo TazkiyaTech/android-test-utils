@@ -12,6 +12,13 @@ import org.hamcrest.TypeSafeMatcher
 object ViewPager2Matchers {
 
     /**
+     * Creates a matcher that matches a [ViewPager2] which has the given page index as its currently selected page.
+     *
+     * Usage example:
+     * ```
+     * onView(withId(R.id.viewPager)).check(matches(withCurrentItem(2)))
+     * ```
+     *
      * @param item The page index to match on.
      * @return A matcher that matches a [ViewPager2] which has the given page index as its currently selected page.
      */
@@ -20,9 +27,21 @@ object ViewPager2Matchers {
     }
 
     /**
+     * Creates a matcher that matches the child [View]
+     * at the given position within the [ViewPager2] which has the given resource id.
+     *
      * Note that it's necessary to scroll the [ViewPager2] to the desired position or close to the desired position
      * before attempting to match the child [View] at that position.
      * Otherwise, it's likely that the [ViewPager2] will not have rendered the child [View] at that position.
+     *
+     * Usage example:
+     * ```
+     * onView(
+     *     withPositionInViewPager2(R.id.myViewPager, position)
+     * ).check(
+     *     matches(hasDescendant(withId(R.id.someView)))
+     * )
+     * ```
      *
      * @param viewPagerId The resource id of the [ViewPager2] which contains the child [View] to match on.
      * @param position The page index of the child [View] to match on.

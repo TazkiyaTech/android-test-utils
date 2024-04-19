@@ -8,9 +8,19 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
 
+/**
+ * A collection of view matchers for the [RecyclerView] class.
+ */
 object RecyclerViewMatchers {
 
     /**
+     * Creates a matcher that matches a [RecyclerView] which contains an adapter with the given number of items.
+     *
+     * Usage example:
+     * ```
+     * onView(withId(R.id.someRecyclerView)).check(matches(hasAdapterSize(5)))
+     * ```
+     *
      * @param size The number of items in the adapter of the [RecyclerView] to match on.
      * @return A matcher that matches a [RecyclerView] which contains an adapter with the given number of items.
      */
@@ -19,9 +29,17 @@ object RecyclerViewMatchers {
     }
 
     /**
+     * Creates a matcher that matches the child [View] at the given position
+     * within the [RecyclerView] which has the given resource id.
+     *
      * Note that it's necessary to scroll the [RecyclerView] to the desired position or close to the desired position
      * before attempting to match the child [View] at that position.
      * Otherwise, it's likely that the [RecyclerView] will not have rendered the child [View] at that position.
+     *
+     * Usage example:
+     * ```
+     * onView(withPositionInRecyclerView(R.id.someRecyclerView, 1)).perform(click())
+     * ```
      *
      * @param recyclerViewId The resource id of the [RecyclerView] which contains the child [View] to match on.
      * @param position The index of the child [View] to match on.

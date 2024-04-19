@@ -17,10 +17,9 @@ object MenuDropDownListViewMatchers {
     /**
      * Creates a [Matcher] that matches a [View] of type `MenuPopupWindow.MenuDropDownListView`.
      *
-     * Here's a usage example:
-     *
+     * Usage example:
      * ```
-     * onView(isMenuDropDownListView()).checkMatches(hasChildCount(3)
+     * onView(isMenuDropDownListView()).check(matches(hasChildCount(3)))
      * ```
      *
      * @return A [Matcher] that matches a [View] of type `MenuPopupWindow.MenuDropDownListView`.
@@ -36,8 +35,7 @@ object MenuDropDownListViewMatchers {
      * Creates a [Matcher] that matches the child [View]
      * at the given position within a `MenuPopupWindow.MenuDropDownListView` instance.
      *
-     * Here's a usage example:
-     *
+     * Usage example:
      * ```
      * onView(withPositionInMenuDropDownListView(1)).perform(click())
      * ```

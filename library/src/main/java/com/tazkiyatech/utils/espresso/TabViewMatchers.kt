@@ -9,6 +9,13 @@ import org.hamcrest.Matcher
 object TabViewMatchers {
 
     /**
+     * Creates a matcher that matches a [TabLayout.TabView] which is in the selected state.
+     *
+     * Usage example:
+     * ```
+     * onView(withTabText("Some text")).check(matches(isSelectedTab()))
+     * ```
+     *
      * @return A matcher that matches a [TabLayout.TabView] which is in the selected state.
      */
     fun isSelectedTab(): Matcher<View> {
@@ -16,6 +23,13 @@ object TabViewMatchers {
     }
 
     /**
+     * Creates a matcher that matches a [TabLayout.TabView] which has the given text.
+     *
+     * Usage example:
+     * ```
+     * onView(withTabText("Some text")).check(matches(isSelectedTab()))
+     * ```
+     *
      * @param text The text to match on.
      * @return A matcher that matches a [TabLayout.TabView] which has the given text.
      */

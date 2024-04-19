@@ -4,6 +4,7 @@ import android.view.View
 import androidx.test.espresso.PerformException
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
+import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.util.HumanReadables
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers
@@ -12,6 +13,14 @@ import java.util.concurrent.TimeoutException
 object ViewActions {
 
     /**
+     * Waits up to [timeout] milliseconds for the view which is the subject of this [ViewInteraction]
+     * to match all of the given view matchers.
+     *
+     * Usage example:
+     * ```
+     * onView(withId(R.id.someView)).perform(waitForMatch(isDisplayed()))
+     * ```
+     *
      * @param matcher The [Matcher] to wait for.
      * @param timeout The length of time in milliseconds to wait for.
      * @return A [ViewAction] that waits up to [timeout] milliseconds for a [View] to match the given [Matcher].
@@ -20,8 +29,10 @@ object ViewActions {
         return WaitForMatchAction(matcher, timeout)
     }
 
-    private class WaitForMatchAction(private val matcher: Matcher<View>,
-                                     private val timeout: Long) : ViewAction {
+    private class WaitForMatchAction(
+        private val matcher: Matcher<View>,
+        private val timeout: Long
+    ) : ViewAction {
 
         override fun getConstraints(): Matcher<View> {
             return Matchers.any(View::class.java)

@@ -21,7 +21,7 @@ import org.hamcrest.Matchers.allOf
  * ```
  *
  * @param matchers The array of [Matcher]s to match.
- * @return This [ViewInteraction] for further perform/verification calls.
+ * @return This [ViewInteraction] for further perform or verification calls.
  */
 fun ViewInteraction.checkMatches(vararg matchers: Matcher<View>): ViewInteraction {
     return check(matches(allOf(*matchers)))
@@ -43,9 +43,11 @@ fun ViewInteraction.checkMatches(vararg matchers: Matcher<View>): ViewInteractio
  *
  * @param matchers The array of [Matcher]s to wait for.
  * @param timeout The length of time in milliseconds to wait for.
- * @return This [ViewInteraction] for further perform/verification calls.
+ * @return This [ViewInteraction] for further perform or verification calls.
  */
-fun ViewInteraction.waitForMatch(vararg matchers: Matcher<View>,
-                                 timeout: Long = 3000L): ViewInteraction {
+fun ViewInteraction.waitForMatch(
+    vararg matchers: Matcher<View>,
+    timeout: Long = 3000L
+): ViewInteraction {
     return perform(ViewActions.waitForMatch(allOf(*matchers), timeout))
 }

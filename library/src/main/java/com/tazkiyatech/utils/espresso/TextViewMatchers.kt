@@ -14,6 +14,14 @@ import org.hamcrest.Matcher
 object TextViewMatchers {
 
     /**
+     * Creates a matcher that matches a descendant of [android.widget.TextView]
+     * which fully or partially contains the string associated with the given resource id.
+     *
+     * Usage example:
+     * ```
+     * onView(withId(R.id.someTextView)).check(matches(withSubstring(R.string.someString)))
+     * ```
+     *
      * @param resourceId The identifier of the [String] resource
      * which the [android.widget.TextView] is expected to contain.
      * @return A matcher that matches a descendant of [android.widget.TextView]
