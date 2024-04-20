@@ -13,8 +13,8 @@ import java.util.concurrent.TimeoutException
 object ViewActions {
 
     /**
-     * Waits up to [timeout] milliseconds for the view which is the subject of this [ViewInteraction]
-     * to match all of the given view matchers.
+     * Creates a [ViewAction] that waits up to [timeout] milliseconds
+     * for the [View] that is the subject of this [ViewAction] to match the given [Matcher].
      *
      * Usage example:
      * ```
@@ -23,7 +23,8 @@ object ViewActions {
      *
      * @param matcher The [Matcher] to wait for.
      * @param timeout The length of time in milliseconds to wait for.
-     * @return A [ViewAction] that waits up to [timeout] milliseconds for a [View] to match the given [Matcher].
+     * @return A [ViewAction] that waits up to [timeout] milliseconds
+     * for the [View] that is the subject of this [ViewAction] to match the given [Matcher].
      */
     fun waitForMatch(matcher: Matcher<View>, timeout: Long = 3000L): ViewAction {
         return WaitForMatchAction(matcher, timeout)
