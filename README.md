@@ -50,7 +50,7 @@ dependencies {
 [6]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewInteractionExtensions.kt
 [7]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewMatchers.kt
 [8]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewPagerMatchers.kt
-[9]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewPager2Actions.java
+[9]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewPager2Actions.kt
 [10]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewPager2Matchers.kt
 [11]: library/src/main/java/com/tazkiyatech/utils/sqlite/QueryPlanExplainer.kt
 [12]: library/src/main/java/com/tazkiyatech/utils/uiautomator/UiDeviceExtensions.kt
