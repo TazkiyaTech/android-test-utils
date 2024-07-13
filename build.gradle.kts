@@ -3,7 +3,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.benmanes.versions)
-    alias(libs.plugins.jetbrains.kotlin.android) apply false
+    alias(libs.plugins.kotlin.android) apply false
 }
 
 tasks.wrapper {
