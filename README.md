@@ -40,12 +40,12 @@ This library contains classes and methods that will ease the writing of your And
 To use the above utilities within your app simply add the following repository
 and dependency declaration in the `build.gradle` file of your Android project:
 
-```groovy
+```kotlin
 repositories {
     mavenCentral()
 }
 dependencies {
-    androidTestImplementation("com.tazkiyatech:android-test-utils:3.0.0")
+    androidTestImplementation("com.tazkiyatech:android-test-utils:3.1.0")
 }
 ```
 
