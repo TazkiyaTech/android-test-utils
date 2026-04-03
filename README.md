@@ -2,6 +2,12 @@
 
 This library contains classes and methods that will ease the writing of your Android instrumentation tests.
 
+## Compose
+
+|                                          |                                                                                                                                                  |
+|------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| [SemanticsNodeInteractionExtensions][21] | Provides extension functions on the [SemanticsNodeInteraction][22] class to improve the fluency of view actions and view assertions in UI tests. |
+
 ## Espresso
 
 |                                   |                                                                                                                                      |
@@ -31,7 +37,8 @@ This library contains classes and methods that will ease the writing of your And
 
 ## Setup
 
-To use the above utilities within your app simply add the following repository and dependency declaration in the `build.gradle` file of your Android project:
+To use the above utilities within your app simply add the following repository
+and dependency declaration in the `build.gradle` file of your Android project:
 
 ```groovy
 repositories {
@@ -43,22 +50,45 @@ dependencies {
 ```
 
 [1]: library/src/main/java/com/tazkiyatech/utils/espresso/MenuDropDownListViewMatchers.kt
+
 [2]: library/src/main/java/com/tazkiyatech/utils/espresso/RecyclerViewMatchers.kt
+
 [3]: library/src/main/java/com/tazkiyatech/utils/espresso/TabViewMatchers.kt
+
 [4]: library/src/main/java/com/tazkiyatech/utils/espresso/TextViewMatchers.kt
+
 [5]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewActions.kt
+
 [6]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewInteractionExtensions.kt
+
 [7]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewMatchers.kt
+
 [8]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewPagerMatchers.kt
+
 [9]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewPager2Actions.kt
+
 [10]: library/src/main/java/com/tazkiyatech/utils/espresso/ViewPager2Matchers.kt
+
 [11]: library/src/main/java/com/tazkiyatech/utils/sqlite/QueryPlanExplainer.kt
+
 [12]: library/src/main/java/com/tazkiyatech/utils/uiautomator/UiDeviceExtensions.kt
+
 [13]: https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView
+
 [14]: https://developer.android.com/reference/com/google/android/material/tabs/TabLayout.TabView
+
 [15]: https://developer.android.com/reference/android/widget/TextView
+
 [16]: https://developer.android.com/reference/android/view/View
+
 [17]: https://developer.android.com/reference/androidx/test/espresso/ViewInteraction
+
 [18]: https://developer.android.com/reference/androidx/viewpager/widget/ViewPager
+
 [19]: https://developer.android.com/reference/androidx/viewpager2/widget/ViewPager2
+
 [20]: https://developer.android.com/reference/androidx/test/uiautomator/UiDevice
+
+[21]: library/src/main/java/com/tazkiyatech/utils/compose/SemanticsNodeInteractionExtensions.kt
+
+[22]: https://developer.android.com/reference/kotlin/androidx/compose/ui/test/SemanticsNodeInteraction
