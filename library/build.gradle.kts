@@ -3,6 +3,7 @@ import com.android.build.api.dsl.LibraryExtension
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.jreleaser)
     `maven-publish`
     signing
 }
@@ -112,14 +113,32 @@ publishing {
 
     repositories {
         maven {
-            name = "sonatype"
-            credentials(PasswordCredentials::class)
-            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            url = layout.buildDirectory.dir("staging-deploy").get().asFile.toURI()
         }
     }
 }
 
-signing {
-    // the "signing.keyId", "signing.password" and "signing.secretKeyRingFile" properties required by this task are defined outside of this project in the "~/.gradle/gradle.properties" file
-    sign(publishing.publications["release"])
+// the "JRELEASER_..." properties required by the "jreleaserDeploy" task are defined outside of this project in the "~/.jreleaser/config.toml" file
+jreleaser {
+    gitRootSearch.set(true)
+    signing {
+        pgp {
+            setActive("ALWAYS")
+            armored = true
+        }
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                create("sonatype") {
+                    setActive("RELEASE")
+                    url = "https://central.sonatype.com/api/v1/publisher"
+                    stagingRepository("build/staging-deploy")
+
+                    // Setting "verifyPom" to "false" bypasses the "Unknown packaging: aar" error
+                    verifyPom = false
+                }
+            }
+        }
+    }
 }
