@@ -2,6 +2,7 @@ import com.android.build.api.dsl.LibraryExtension
 
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.compose.compiler)
     `maven-publish`
     signing
 }
@@ -31,6 +32,10 @@ configure<LibraryExtension> {
         targetCompatibility = JavaVersion.VERSION_21
     }
 
+    buildFeatures {
+        compose = true
+    }
+
     lint {
         abortOnError = true
     }
@@ -44,10 +49,11 @@ configure<LibraryExtension> {
 }
 
 dependencies {
+    implementation(libs.test.core)
+
+    api(libs.compose.ui.test)
     api(libs.espresso.contrib)
     api(libs.uiautomator)
-
-    implementation(libs.test.core)
 
     testRuntimeOnly(libs.junit.platform.launcher)
 
