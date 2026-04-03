@@ -1,16 +1,17 @@
+import com.android.build.api.dsl.LibraryExtension
+
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
     `maven-publish`
     signing
 }
 
-android {
-    compileSdk = 34
+configure<LibraryExtension> {
+    compileSdk = 36
     namespace = "com.tazkiyatech.utils"
 
     defaultConfig {
-        minSdk = 23
+        minSdk = 26
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -26,12 +27,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     lint {
@@ -49,7 +46,10 @@ android {
 dependencies {
     api(libs.espresso.contrib)
     api(libs.uiautomator)
+
     implementation(libs.test.core)
+
+    testRuntimeOnly(libs.junit.platform.launcher)
 
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.junit.jupiter.engine)
