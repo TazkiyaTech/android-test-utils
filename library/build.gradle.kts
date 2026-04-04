@@ -1,15 +1,16 @@
 import com.android.build.api.dsl.LibraryExtension
 
+private val targetSdk = 36
+
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.jreleaser)
     `maven-publish`
-    signing
 }
 
 configure<LibraryExtension> {
-    compileSdk = 36
+    compileSdk = targetSdk
     namespace = "com.tazkiyatech.utils"
 
     defaultConfig {
@@ -33,12 +34,9 @@ configure<LibraryExtension> {
         targetCompatibility = JavaVersion.VERSION_21
     }
 
-    buildFeatures {
-        compose = true
-    }
-
     lint {
         abortOnError = true
+        targetSdk = targetSdk
     }
 
     publishing {
@@ -46,6 +44,11 @@ configure<LibraryExtension> {
             withJavadocJar()
             withSourcesJar()
         }
+    }
+
+    testOptions {
+        animationsDisabled = true
+        targetSdk = targetSdk
     }
 }
 

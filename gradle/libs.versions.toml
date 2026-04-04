@@ -15,5 +15,5 @@ uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", versi
 [plugins]
 android-library = { id = "com.android.library", version = "8.13.2" }
 benmanes-versions = { id = "com.github.ben-manes.versions", version = "0.53.0" }
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version = "2.3.20" }
 jreleaser = { id = "org.jreleaser", version = "1.23.0" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version = "2.3.20" }
