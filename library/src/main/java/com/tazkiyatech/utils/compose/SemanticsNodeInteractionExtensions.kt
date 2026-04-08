@@ -2,9 +2,26 @@ package com.tazkiyatech.utils.compose
 
 import androidx.annotation.StringRes
 import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.SemanticsProperties.StateDescription
+import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.*
 import androidx.test.platform.app.InstrumentationRegistry
+
+/**
+ * Asserts that the node has a `"CollectionInfo"` semantic property with the expected `rowCount` value.
+ *
+ * Example usage:
+ *
+ * ```
+ * composeTestRule.onNodeWithTag("SomeTag").assertRowCount(100)
+ * ```
+ */
+fun SemanticsNodeInteraction.assertRowCount(expected: Int) {
+    assert(SemanticsMatcher("CollectionInfo.rowCount == $expected") { node ->
+        node.config.getOrNull(SemanticsProperties.CollectionInfo)?.rowCount == expected
+    })
+}
 
 /**
  * Asserts that the node's state description matches the expected value.
