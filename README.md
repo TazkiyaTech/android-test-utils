@@ -45,7 +45,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    androidTestImplementation("com.tazkiyatech:android-test-utils:3.2.0")
+    androidTestImplementation("com.tazkiyatech:android-test-utils:3.3.0")
 }
 ```
 
