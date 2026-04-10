@@ -14,11 +14,15 @@ import androidx.test.platform.app.InstrumentationRegistry
  * Example usage:
  *
  * ```
- * composeTestRule.onNodeWithTag("SomeTag").assertRowCount(100)
+ * composeTestRule.onNodeWithTag("SomeCollectionView").assertRowCount(100)
  * ```
+ *
+ * @param expected The expected row count.
+ * @return The [SemanticsNodeInteraction] that is the receiver of this function call.
+ * @throws AssertionError If the node does not have a `"CollectionInfo"` semantic property with the expected `rowCount` value.
  */
-fun SemanticsNodeInteraction.assertRowCount(expected: Int) {
-    assert(SemanticsMatcher("CollectionInfo.rowCount == $expected") { node ->
+fun SemanticsNodeInteraction.assertRowCount(expected: Int): SemanticsNodeInteraction {
+    return assert(SemanticsMatcher("CollectionInfo.rowCount == $expected") { node ->
         node.config.getOrNull(SemanticsProperties.CollectionInfo)?.rowCount == expected
     })
 }
@@ -29,11 +33,15 @@ fun SemanticsNodeInteraction.assertRowCount(expected: Int) {
  * Example usage:
  *
  * ```
- * composeTestRule.onNodeWithTag("SomeTag").assertStateDescription("Some state description")
+ * composeTestRule.onNodeWithTag("SomeView").assertStateDescription("Some state description")
  * ```
+ *
+ * @param expectedValue The expected state description.
+ * @return The [SemanticsNodeInteraction] that is the receiver of this function call.
+ * @throws AssertionError If the node does not have the expected state description.
  */
-fun SemanticsNodeInteraction.assertStateDescription(expectedValue: String) {
-    assert(SemanticsMatcher.expectValue(StateDescription, expectedValue))
+fun SemanticsNodeInteraction.assertStateDescription(expectedValue: String): SemanticsNodeInteraction {
+    return assert(SemanticsMatcher.expectValue(StateDescription, expectedValue))
 }
 
 /**
@@ -42,23 +50,31 @@ fun SemanticsNodeInteraction.assertStateDescription(expectedValue: String) {
  * Example usage:
  *
  * ```
- * composeTestRule.onNodeWithTag("SomeTag").assertTextEquals(R.string.some_string)
+ * composeTestRule.onNodeWithTag("SomeView").assertTextEquals(R.string.some_string)
  * ```
+ *
+ * @param resourceId The resource id of the expected String.
+ * @return The [SemanticsNodeInteraction] that is the receiver of this function call.
+ * @throws AssertionError If the node does not have the expected text.
  */
-fun SemanticsNodeInteraction.assertTextEquals(@StringRes resourceId: Int) {
+fun SemanticsNodeInteraction.assertTextEquals(@StringRes resourceId: Int): SemanticsNodeInteraction {
     val context = InstrumentationRegistry.getInstrumentation().targetContext
-    assertTextEquals(context.getString(resourceId))
+    return assertTextEquals(context.getString(resourceId))
 }
 
 /**
- * Performs the [androidx.compose.ui.semantics.SemanticsActions.SetProgress] action with the given [value].
+ * Performs the [SemanticsActions.SetProgress] action with the given [value] on this node.
  *
  * Example usage:
  *
  * ```
- * composeTestRule.onNodeWithTag("SomeTag").setProgress(1f)
+ * composeTestRule.onNodeWithTag("SomeView").setProgress(1f)
  * ```
+ *
+ * @param value The progress value to pass into the [SemanticsActions.SetProgress] action.
+ * @return The [SemanticsNodeInteraction] that is the receiver of this function call.
+ * @throws AssertionError If the [SemanticsActions.SetProgress] action is not defined on this node.
  */
-fun SemanticsNodeInteraction.setProgress(value: Float) {
-    performSemanticsAction(SemanticsActions.SetProgress) { action -> action(value) }
+fun SemanticsNodeInteraction.setProgress(value: Float): SemanticsNodeInteraction {
+    return performSemanticsAction(SemanticsActions.SetProgress) { action -> action(value) }
 }
