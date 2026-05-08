@@ -1,14 +1,23 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath(libs.javax.activation)
+    }
+}
+
 plugins {
     alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.jreleaser) apply false
     alias(libs.plugins.benmanes.versions)
 }
 
 tasks.wrapper {
-    gradleVersion = "9.4.1"
+    gradleVersion = "9.5.0"
 }
 
 // Alter the default behaviour of the "com.github.ben-manes.versions" plugin
